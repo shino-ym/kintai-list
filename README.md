@@ -1,4 +1,4 @@
-# coachtechフリマ
+# coachtech勤怠管理アプリ
 
 ## 環境構築
 **Dockerビルド**\
