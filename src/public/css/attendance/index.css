@@ -1,0 +1,128 @@
+.attendance-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.status{
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #C8C8C8;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color:#696969;
+}
+
+.attendance-date{
+    margin-top: 50px;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #000;
+}
+
+.time{
+    margin-top: 50px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #000;
+}
+
+.submit-black{
+    margin-top: 50px;
+    width: 221px;
+    height: 77px;
+    border-radius: 20px;
+    background-color: #000000;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #fff;
+}
+
+.submit-white {
+    margin-top: 50px;
+    width: 221px;
+    height: 77px;
+    border-radius: 20px;
+    background-color: #fff;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #000;
+    border: none;
+}
+
+.button-group{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.finished-message{
+    margin-top: 50px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    text-align: center;
+    color: #000000;
+}
+
+/* タブレット (768〜850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .attendance-date {
+        font-size: 30px;
+    }
+
+    .time {
+        font-size: 50px;
+    }
+
+    .submit-black {
+        width: 150px;
+        height: 55px;
+        font-size: 28px
+    }
+
+    .submit-white {
+        width: 150px;
+        height: 55px;
+        font-size: 28px;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .finished-message {
+        margin-top: 50px;
+        font-family: Inter;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 100%;
+        letter-spacing: 15%;
+        text-align: center;
+        color: #000000;
+    }
+}

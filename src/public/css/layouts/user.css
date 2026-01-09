@@ -1,0 +1,163 @@
+/*全体 */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダー */
+header {
+    width: 100%;
+    background-color: #000;
+    display: grid;
+    align-items: center;
+    padding: 16px 16px;
+    border: 1px solid #E0DFDE;
+    text-align: center;
+    font-family: serif;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.header-logo {
+    grid-column: 1;
+    text-align: center;
+    display: block;
+    width: 80%;
+}
+
+main {
+    min-height: 100vh;
+}
+
+/* 背景色 */
+.bg-default {
+    background-color: #fff;
+}
+
+/* 勤怠画面など専用背景色 */
+.bg-color {
+    background-color: #F0EFF2;
+}
+
+/* ヘッダーナビ */
+.header-nav {
+    width: 95%;
+    grid-column: 3;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.header-nav__item {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header-nav__link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout-link {
+    text-decoration: none;
+    background: none;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    color: #fff;
+}
+
+.header-nav__btn {
+    color: #000;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    background: #fff;
+    padding: 5px 10px;
+
+}
+
+/* リストリセット */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* PC (1400px以上) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    body {
+        max-width: 1540px;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    header {
+        max-width: 1540px;
+        margin: 0 auto;
+    }
+
+    .header-nav__link,
+    .header-nav__btn,
+    .header-nav__button,
+    .search-form {
+        font-size: 24px;
+    }
+
+    main {
+        max-width: 1540px;
+    }
+}
+
+/* タブレット (768〜850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .header {
+        width: 100%;
+        padding: 10px 10px;
+    }
+
+    .header-nav {
+        gap: 10px;
+    }
+
+    .header-nav__link,
+    .header-nav__btn,
+    .header-nav__button,
+    .logout-link {
+        font-size: 14px;
+    }
+
+    .search-form {
+        font-size: 14px;
+    }
+
+    body {
+        max-width: 100%;
+        background-color: #F0EFF2;
+    }
+
+    main {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 32px;
+        background-color: #F0EFF2;
+    }
+}

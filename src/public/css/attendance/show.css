@@ -1,0 +1,268 @@
+/* 全体コンテナ */
+.attendance-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.center-wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 60px;
+}
+
+/* 見出し */
+h1 {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 100%;
+    color: #000;
+    border-left: 8px solid #000;
+    padding-left: 12px;
+}
+
+/* テーブル */
+.detail-table {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.detail-table thead tr {
+    border-bottom: 2px solid #ccc;
+}
+
+.detail-table th{
+    border: none;
+    padding: 25px 40px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    color: #737373;
+    vertical-align: middle;
+    text-align: left;
+    width: 300px;
+}
+.detail-table td {
+    border: none;
+    padding: 25px 25px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    color: #737373;
+    vertical-align: middle;
+}
+
+td.user-name,
+td.date-cell,
+td.time-cell {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+td.date-cell{
+    padding-left: 45px;
+}
+
+td.user-name{
+    padding-left: 45px;
+}
+
+td.date-cell{
+    display: flex;
+    align-items: center;
+    gap: 65px;
+}
+
+.time-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 44px;
+}
+
+/* 入力ブロック */
+.input-block-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 44px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.error-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.input-error-message {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 時間入力 */
+.time {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+    width: 103px;
+    text-align: center;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    height: 28px;
+}
+
+.time::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* セパレーター */
+.separator {
+    text-align: center;
+    min-width: 20px;
+}
+
+/* テキストエリア */
+textarea{
+    max-width: 316px;
+    width: 100%;
+    max-height: 72px;
+    height: 100%;
+    border-radius: 4px;
+    border-width: 1px;
+    border: 1px solid #D9D9D9;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 提出ボタン */
+.submit{
+    display: flex;
+    justify-content: flex-end;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+.submit-btn{
+    max-width: 130px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #000;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #fff;
+    align-items: right;
+    margin-top: 27px;
+}
+
+input[readonly],
+textarea[readonly] {
+    border: none;
+    cursor: not-allowed;
+}
+
+/* ステータス */
+.pending{
+    display: flex;
+    justify-content: flex-end;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+.pending-message {
+    font-family: Inter;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #FF000080;
+    padding-top: 27px;
+}
+
+/* タブレット (768〜850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+
+    .center-wrapper {
+        margin-top: 30px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .detail-table th {
+        text-align: left;
+        width: 180px;
+    }
+    .detail-table th,
+    .detail-table td {
+        font-size: 12px;
+        padding: 10px 30px;
+    }
+
+    td.user-name,
+    td.date-cell,
+    td.time-cell {
+        font-size: 12px;
+    }
+
+    td.user-name{
+        padding-left: 60px
+    }
+    td.date-cell {
+        padding-left: 60px;
+    }
+
+    td.date-cell {
+        gap: 50px;
+    }
+
+    td.time-cell {
+        gap: 20px;
+    }
+
+    .input-block-wrapper {
+        gap: 20px;
+    }
+
+    textarea {
+        max-width: 270px;
+        width: 100%;
+    }
+
+    .input-error-message {
+        font-size: 12px;
+    }
+
+    .time {
+        font-size: 12px;
+    }
+
+    .submit-btn {
+        height: 40px;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+}

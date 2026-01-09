@@ -1,0 +1,2 @@
+# Docker MySQLデータを除外
+/docker/mysql/data/

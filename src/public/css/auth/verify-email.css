@@ -1,0 +1,87 @@
+.verify {
+    font-family: "Inter", sans-serif;
+    color: #000;
+}
+
+/* コンテナ全体 */
+.verify-container {
+    height: 100%;
+    margin: 0;
+}
+
+/* フォーム全体 */
+.verify-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* メッセージ */
+.verify-message {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.approve-btn {
+    width: 257px;
+    height: 69px;
+    opacity: 1;
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: #D9D9D9;
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-weight: Bold;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 50px
+}
+
+.mail-submit {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #0073CC;
+    border: none;
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+/* タブレット・スマホ用 */
+@media (min-width: 768px) and (max-width: 850px) {
+    .verify-message {
+        font-size: 20px;
+    }
+
+    .approve-btn {
+        width: 200px;
+        height: 45px;
+        font-size: 20px;
+        margin-top: 40px
+    }
+
+    .mail-submit {
+        font-family: Inter;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        margin-top: 40px;
+    }
+}

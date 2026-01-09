@@ -1,0 +1,129 @@
+.correction-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.center-wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 60px;
+}
+
+h1 {
+    text-align: left;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #000;
+    border-left: 8px solid #000000;
+    padding-left: 12px;
+}
+
+.tab-menu {
+    max-width: 900px;
+    width: 100%;
+    opacity: 1;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.tab {
+    width: 140px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #000000;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.tab.active {
+    color: #000;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+}
+.separator{
+    max-width: 900px;
+    width: 100%;
+    border-width: 1px;
+    border: 1px solid #000000
+}
+
+.correction-table {
+    margin-top: 30px;
+    flex-direction: column;
+    max-width: 900px;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+.correction-table th,
+.correction-table td {
+    border: none;
+    text-align: center;
+    padding: 8px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #737373;
+}
+
+.detail {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 15%;
+    color: #000;
+    text-decoration: none;
+}
+
+.correction-table thead tr {
+    border-bottom: 2px solid #ccc;
+}
+
+.correction-table tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+/* タブレット (768〜850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+
+    .center-wrapper {
+        margin-top: 30px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .correction-table th,
+    .correction-table td {
+        font-size: 12px;
+    }
+
+    .detail {
+        font-size: 12px;
+    }
+
+}
