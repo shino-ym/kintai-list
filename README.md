@@ -2,27 +2,27 @@
 
 ## 環境構築
 **Dockerビルド**\
-1.
+1. 
 ```
 git clone git@github.com:shino-ym/kintai-list.git
 ```
 
-2.DockerDesktopアプリを立ち上げる\
-3.
+2. DockerDesktopアプリを立ち上げる\
+3. 
 ```
 docker-compose up -d --build
 ```
 
-**Laravel環境構築**\
-1. PHPコンテナ内に入る\
+**Laravel環境構築**
+1. PHPコンテナ内に入る
 ```
 docker-compose exec php bash
 ```
-2. 依存パッケージをインストール\
+2. 依存パッケージをインストール
 ```
 composer install
 ```
-3. .env.exampleをコピーして.envを作る\
+3. .env.exampleをコピーして.envを作る
 ```
 cp .env.example .env
 ```
@@ -35,23 +35,27 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
-5. アプリケーションキーの作成\
+5. アプリケーションキーの作成
 ```
 php artisan key:generate
 ```
-6. マイグレーションの実行\
+6. マイグレーションの実行
 ```
 php artisan migrate
 ```
-7. シーディングの実行\
+7. シーディングの実行
 ```
 php artisan db:seed
 ```
-> アクセスした場合に権限エラーが発生した場合は php コンテナから脱出し、コマンドライン上で以下を実行\
-> sudo chmod -R 777 src/storage`
+> アクセスした場合に権限エラーが発生した場合は php コンテナから脱出し、コマンドライン上で以下を実行
+> ```
+>sudo chmod -R 777 src/storage
+>```
 >
-> 上のコマンドで全データが動かない場合は、以下を実行。ただし権限が強すぎるので使用時は注意をしてください\
-> `sudo chmod -R 777 src/*`
+> 上のコマンドで全データが動かない場合は、以下を実行。ただし権限が強すぎるので使用時は注意をしてください
+> ```
+>sudo chmod -R 777 src/*
+>```
 
 8. シーディングの実行(もしも上記 chmod -R 777 を実行した場合は docker-compose exec php bash で php コンテナ内に入ってください)\
 ```
@@ -60,7 +64,7 @@ php artisan db:seed
 
 ## MailHog 設定
 
-env に以下を修正\
+env に以下を修正
 
 ```
 MAIL_MAILER=smtp
@@ -84,17 +88,17 @@ docker-compose exec mysql bash
 mysql -u root -p
 ```
 
-password の文字が出たら\
+password の文字が出たら
 ```
 root
 ```
 
-2. テスト用のデータベース(demo_test)を作成するために以下を実行\
+2. テスト用のデータベース(demo_test)を作成するために以下を実行
 ```
 CREATE DATABASE demo_test;
 ```
 
-3. データベースが作成されたか確認\
+3. データベースが作成されたか確認
 ```
 SHOW DATABASES;
 ```
@@ -108,35 +112,36 @@ APP_ENV=test
 APP_KEY=
 ```
 
-6. PHPコンテナ内に入る\
+6. PHPコンテナ内に入る
 ```
 docker-compose exec php bash
 ```
 
-7. アプリケーションキーを作成\
+7. アプリケーションキーを作成
 ```
 php artisan key:generate --env=testing
 ```
 
-8. キャッシュ削除\
+8. キャッシュ削除
 ```
 php artisan config:clear
 ```
 
-9. マイグレーション実行\
+9. マイグレーション実行
 ```
 php artisan migrate --env=testing
 ```
 
-10. 全てのテスト項目を一気にテストするために、以下を実行\
+10. 全てのテスト項目を一気にテストするために、以下を実行
 ```
 php artisan test
 ```
 
 ## URL
 
-- 開発環境： 一般ユーザーログイン画面 http://localhost/login \
-         : 管理者ログイン画面 http://localhost/admin/login
+- 開発環境： \
+⚪︎一般ユーザーログイン画面 http://localhost/login \
+⚪︎管理者ログイン画面 http://localhost/admin/login
 - phpMyAdmin:：http://localhost:8080/
 
 ## ユーザー情報
