@@ -60,8 +60,7 @@ class AdminAttendanceRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],
-                'date'    => ['required', 'date'],
-            // type="time" のため date_format / required は書かない
+            'date'    => ['required', 'date'],
             'clock_in'       => 'nullable',
             'clock_out'      => 'nullable',
 
@@ -69,7 +68,6 @@ class AdminAttendanceRequest extends FormRequest
             'break_end.*'    => 'nullable',
 
             'remarks' => 'required|string|max:255',
-            'date'    => 'required|date',
         ];
     }
 
@@ -87,9 +85,7 @@ class AdminAttendanceRequest extends FormRequest
             $clockIn  = $this->clock_in;
             $clockOut = $this->clock_out;
 
-            // ==========================================================
-            // ① 出勤・退勤どちらか欠けている → clock_both のみエラー
-            // ==========================================================
+            // 出勤・退勤どちらか欠けている → clock_both のみエラー
             if (empty($clockIn) || empty($clockOut)) {
                 $validator->errors()->add(
                     'clock_both',
@@ -98,9 +94,7 @@ class AdminAttendanceRequest extends FormRequest
                 return;
             }
 
-            // ==========================================================
-            // ② 時刻としてパースできるか
-            // ==========================================================
+            //  時刻としてパースできるか
             try {
                 $clockInCarbon  = Carbon::createFromFormat('H:i', $clockIn);
                 $clockOutCarbon = Carbon::createFromFormat('H:i', $clockOut);
@@ -113,7 +107,7 @@ class AdminAttendanceRequest extends FormRequest
             }
 
             // ==========================================================
-            // ③ 出勤 >= 退勤のとき
+            //  出勤 >= 退勤のとき
             // ==========================================================
             if ($clockInCarbon >= $clockOutCarbon) {
                 $validator->errors()->add(
@@ -124,7 +118,7 @@ class AdminAttendanceRequest extends FormRequest
             }
 
             // ==========================================================
-            // ④ 「休憩チェック」
+            // 「休憩チェック」
             // ==========================================================
             $starts = is_array($this->break_start) ? $this->break_start : [];
             $ends   = is_array($this->break_end) ? $this->break_end : [];
@@ -203,7 +197,7 @@ class AdminAttendanceRequest extends FormRequest
                 }
             }
             // ==========================================================
-            // ⑤ 新規レコードでエラーがある場合、全フィールドをクリア
+            //  新規レコードでエラーがある場合、全フィールドをクリア
             // ==========================================================
             if (!$this->recordExists && $validator->errors()->any()) {
                 $this->merge([
@@ -216,6 +210,4 @@ class AdminAttendanceRequest extends FormRequest
             }
         });
     }
-
-
 }

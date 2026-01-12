@@ -123,8 +123,12 @@ class AdminAttendanceCorrectionController extends Controller
         // -------------------------------
         // 備考
         // -------------------------------
-        $remarks = $selectedCorrection->remarks;
-
+        if ($selectedCorrection->status === 'approved') {
+            $record = $selectedCorrection->attendanceRecord->fresh();
+            $remarks = $record->remarks;
+        } else {
+            $remarks = $selectedCorrection->remarks;
+        }
 
         return view('admin.attendance.show', compact(
             'record',

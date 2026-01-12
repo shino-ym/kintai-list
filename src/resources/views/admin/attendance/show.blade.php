@@ -98,7 +98,7 @@
                 <tr>
                     <th>備考</th>
                     <td>
-                        <textarea name="remarks" rows="3" @if($isReadonly) readonly @endif>{{ $remarks }}</textarea>
+                        <textarea name="remarks" rows="3" @if($isReadonly) readonly @endif>{{ $remarks}}</textarea>
                         @error('remarks')<div class="input-error-message">{{ $message }}</div>@enderror
                     </td>
                 </tr>
@@ -114,7 +114,7 @@
     {{-- 承認ボタンまたは修正不可メッセージ --}}
     <div class="submit">
 
-        {{-- ① 承認待ち × 承認画面 --}}
+        {{-- 承認待ち × 承認画面 --}}
 
         @if($showPendingMessage)
             <div class="pending-message">

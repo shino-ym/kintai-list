@@ -214,7 +214,20 @@ class AdminAttendanceController extends Controller
         // -------------------------------
         // 備考
         // -------------------------------
-        $remarks = old('remarks', $selectedCorrection->remarks ?? $record->remarks ?? '');
+
+        // 未承認の修正申請があるか？
+        $pendingCorrection = $record->corrections()
+            ->where('status', 'pending')
+            ->latest()
+            ->first();
+
+        if ($pendingCorrection) {
+            // 申請中の内容を見せる
+            $remarks = $pendingCorrection->remarks;
+        } else {
+            // 確定している勤怠を見せる
+            $remarks = $record->remarks;
+        }
 
         return view('admin.attendance.show', compact(
             'record',
@@ -248,19 +261,7 @@ class AdminAttendanceController extends Controller
                 'user_id' => $data['user_id'],
                 'date'    => $data['date'],
             ],
-            [
-                'clock_in'     => $data['clock_in'] ?? null,
-                'clock_out'    => $data['clock_out'] ?? null,
-                'remarks'      => $data['remarks'] ?? null,
-                'is_corrected' => true,
-            ]
         );
-
-        if ($record->corrections()->where('status', 'pending')->exists()) {
-            return back()->withErrors([
-                'msg' => '＊承認待ちのため修正はできません。',
-            ]);
-        }
 
         $record->update([
             'clock_in'     => $data['clock_in'] ?? null,

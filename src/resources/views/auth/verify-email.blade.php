@@ -14,12 +14,13 @@
             <p>登録していただいたメールアドレスに認証メールを送付しました。</p>
             <p>メール認証を完了してください。</p>
         </div>
-        {{-- 開発環境のみ：Mailhog を開くボタン --}}
-            @if(app()->environment('local'))
-            <a href="http://localhost:8025/" target="_blank" class="approve-btn">
-                認証はこちらから
-            </a>
-            @endif
+
+        {{-- Mailhog を開くボタン --}}
+        @if(app()->environment('local'))
+        <a href="http://localhost:8025/" target="_blank" class="approve-btn">
+            認証はこちらから
+        </a>
+        @endif
 
         <form method="post" action="{{route('verification.send')}}" >
             @csrf

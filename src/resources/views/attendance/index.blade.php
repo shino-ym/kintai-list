@@ -13,7 +13,7 @@ $today = Carbon::now();
 @endphp
 
 <div class="attendance-container">
-    {{-- ステータス表示（数字や記号でもOK） --}}
+    {{-- ステータス表示 --}}
     <div class="status">
         @switch($status)
             @case('勤務外')
@@ -69,7 +69,6 @@ $today = Carbon::now();
 </div>
 
 <script>
-// JSで数字だけの時刻を表示（HHMM形式）
 function updateTime() {
     const now = new Date();
     const hh = now.getHours().toString().padStart(2,'0');

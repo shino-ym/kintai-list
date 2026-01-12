@@ -121,32 +121,31 @@ class AttendanceRecord extends Model
         return sprintf('%d:%02d', $hours, $minutes);
     }
 
-    // -------------------------------
     // 勤務時間・休憩時間を再計算して保存
     public function recalcTotalTimes()
     {
+
         if (!$this->clock_in || !$this->clock_out) {
-            $this->total_seconds = 0;
-            $this->total_break_seconds = 0;
-            $this->save();
-            return;
+        return;
         }
 
         // clock_in / clock_out を Carbon に変換
         $clockIn  = Carbon::parse($this->clock_in);
         $clockOut = Carbon::parse($this->clock_out);
 
+        if ($clockOut->lte($clockIn)) {
+        return;
+        }
+
         // 勤務時間計算
-        $workSeconds = $clockOut->diffInSeconds($clockIn);
+        $workSeconds = $clockIn->diffInSeconds($clockOut);
 
         // 休憩合計
         $breakSeconds = $this->breaks->sum(function ($break) {
             if (!$break->break_start || !$break->break_end) return 0;
 
-            $start = Carbon::parse($break->break_start);
-            $end   = Carbon::parse($break->break_end);
-
-            return $end->diffInSeconds($start);
+            return Carbon::parse($break->break_end)
+                        ->diffInSeconds(Carbon::parse($break->break_start));
         });
 
         $this->total_seconds = max($workSeconds - $breakSeconds, 0);

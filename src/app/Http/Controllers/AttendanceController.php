@@ -170,7 +170,7 @@ class AttendanceController extends Controller
         $month = $request->query('month', now()->month);
 
         // 基準日・前月・翌月の作成
-        $date = \Carbon\Carbon::create($year, $month, 1); 
+        $date = \Carbon\Carbon::create($year, $month, 1);
         $prevMonth = $date->copy()->subMonth();
         $nextMonth = $date->copy()->addMonth();
 
@@ -250,24 +250,12 @@ class AttendanceController extends Controller
         // URLに correction_id があれば優先
         $correctionId = $request->query('correction_id');
 
-        if ($correctionId) {
-            $selectedCorrection = $record->corrections()->find($correctionId);
-        } else {
-            // ①未承認（自分の申請）を優先
-            $selectedCorrection = $record->corrections()
-                ->where('status', 'pending')
-                ->where('requested_by_user_id', $user->id)
-                ->latest()
-                ->first();
-
-            // ②未承認がなければ最新の承認済みを優先
-            if (!$selectedCorrection) {
-                $selectedCorrection = $record->corrections()
-                    ->where('status', 'approved')
-                    ->latest('updated_at')
-                    ->first();
-            }
-        }
+        // 未承認（自分の申請）を優先
+        $selectedCorrection = $record->corrections()
+            ->where('status', 'pending')
+            ->where('requested_by_user_id', $user->id)
+            ->latest()
+            ->first();
 
         // 出退勤（H:i 形式）
         $clockIn = '';
@@ -325,13 +313,17 @@ class AttendanceController extends Controller
         }
 
         // 備考
-        $remarks = old('remarks', $selectedCorrection->remarks ?? $record->remarks ?? '');
-
-        // 未承認申請があるか
-        $isPending = $record->corrections()
-            ->where('requested_by_user_id', $user->id)
+        $pendingCorrection = $record->corrections()
             ->where('status', 'pending')
-            ->exists();
+            ->where('requested_by_user_id', $user->id)
+            ->latest()
+            ->first();
+
+        $isPending = (bool) $pendingCorrection;
+
+        $remarks = $pendingCorrection
+            ? $pendingCorrection->remarks
+            : $record->remarks;
 
         return view('attendance.show', compact(
             'record', 'user', 'date',

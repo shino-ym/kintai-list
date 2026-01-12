@@ -19,7 +19,7 @@ class BreakRecord extends Model
     ];
 
     // ---------------------------------
-    // 表示用 accessor（Carbon に変換）
+    // 表示用 アクセサ（Carbon に変換）
     // ---------------------------------
     public function getBreakStartTimeAttribute()
     {

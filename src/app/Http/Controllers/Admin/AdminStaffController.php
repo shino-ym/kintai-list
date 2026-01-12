@@ -17,10 +17,8 @@ class AdminStaffController extends Controller
 
     public function list(Request $request)
     {
-        // 一般ユーザーの情報をとる
         $staffs = User::where('role', 'user')->get();
 
         return view('admin.staffs.list',compact('staffs'));
     }
-
 }
