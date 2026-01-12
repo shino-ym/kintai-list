@@ -90,6 +90,7 @@ class AttendanceCorrectionsTableSeeder extends Seeder
                     $record->update([
                         'clock_in'  => $adjustedClockIn,
                         'clock_out' => $adjustedClockOut,
+                        'remarks'   => $correction->remarks,
                     ]);
                 }
 

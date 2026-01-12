@@ -56,11 +56,10 @@ php artisan db:seed
 > ```
 >sudo chmod -R 777 src/*
 >```
-
-8. シーディングの実行(もしも上記 chmod -R 777 を実行した場合は docker-compose exec php bash で php コンテナ内に入ってください)\
-```
-php artisan db:seed
-```
+> シーディングの実行(もしも上記 chmod -R 777 を実行した場合は docker-compose exec php bash で php コンテナ内に入ってください)
+>```
+>php artisan db:seed
+>```
 
 ## MailHog 設定
 
